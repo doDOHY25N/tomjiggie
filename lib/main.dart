@@ -203,9 +203,11 @@ class MyPage extends StatelessWidget {
                   ),
                 ),
               ),
+
               const SizedBox(
                 height: 50,
               ),
+
               // 지기 랭킹
               Center(
                 child: Container(
@@ -223,6 +225,150 @@ class MyPage extends StatelessWidget {
                   ),
                   width: 300,
                   height: 500,
+                  child: Padding(
+                    padding: const EdgeInsets.fromLTRB(30.0, 40, 30, 0),
+                    child: Column(
+                      children: [
+                        // 제목
+                        Row(
+                          children: const [
+                            Center(
+                              child: Text(
+                                "지기 랭킹",
+                                style: TextStyle(
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.w900
+                                ),
+                              ),
+                            ),
+                            SizedBox(
+                              width: 120,
+                            ),
+                            Center(
+                              child: Text(
+                                "더보기",
+                                style: TextStyle(
+                                    fontSize: 13,
+                                    fontWeight: FontWeight.w900,
+                                    color: Colors.blue
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                        const SizedBox(
+                          height: 20,
+                        ),
+                        // 인기, AI 추천, 여행톡 묶음
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            Column(
+                              children: [
+                                Image.asset(
+                                  'images/star.png',
+                                  height: 30,
+                                ),
+                                SizedBox(
+                                  height: 5,
+                                ),
+                                const Text(
+                                  "인기",
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.w600
+                                  ),
+                                ),
+                              ],
+                            ),
+                            Column(
+                              children: [
+                                Image.asset(
+                                  'images/ai.png',
+                                  height: 30,
+                                ),
+                                SizedBox(
+                                  height: 5,
+                                ),
+                                const Text(
+                                  "AI 추천",
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.w600
+                                  ),
+                                ),
+                              ],
+                            ),
+                            Column(
+                              children: [
+                                Image.asset(
+                                  'images/chat.png',
+                                  height: 30,
+                                ),
+                                SizedBox(
+                                  height: 5,
+                                ),
+                                const Text(
+                                  "지기톡",
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.w600
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                        // 공지사항
+                        Divider(
+                          color: Colors.grey[300],
+                          thickness: 1,
+                          height: 35,
+                          indent: 20,
+                          endIndent: 20,
+                        ),
+                        Row(
+                            children: [
+                              SizedBox(
+                                width: 20,
+                              ),
+                              Container(
+                                decoration: BoxDecoration(
+                                    color: Colors.blue[100],
+                                    borderRadius: BorderRadius.circular(5)
+                                ),
+                                width: 30,
+                                height: 20,
+                                child: const Center(
+                                  child: Text(
+                                    "공지",
+                                    textAlign: TextAlign.center,
+                                    style: TextStyle(
+                                        fontSize: 10,
+                                        fontWeight: FontWeight.w900,
+                                        color: Colors.blue
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              SizedBox(
+                                width: 5,
+                              ),
+                              const Text(
+                                "로컬 여행 메이트를 고르는 꿀팁!",
+                                style: TextStyle(
+                                    fontWeight: FontWeight.w900
+                                ),
+                              ),
+                              SizedBox(
+                                width: 10,
+                              ),
+                              const Icon(
+                                Icons.arrow_forward_ios,
+                                size: 15,
+                              ),
+                            ]
+                        )
+                      ],
+                    ),
+                  ),
                 ),
               ),
             ],
