@@ -230,9 +230,9 @@ class MyPage extends StatelessWidget {
                     child: Column(
                       children: [
                         // 제목
-                        const Row(
+                        Row(
                           children: [
-                            Center(
+                            const Center(
                               child: Text(
                                 "지기 랭킹",
                                 style: TextStyle(
@@ -241,10 +241,24 @@ class MyPage extends StatelessWidget {
                                 ),
                               ),
                             ),
-                            SizedBox(
-                              width: 170,
+
+                            const SizedBox(
+                              width: 5,
                             ),
-                            Center(
+
+                            Text(
+                              "전국",
+                              style: TextStyle(
+                                fontSize: 15,
+                                fontWeight: FontWeight.w500,
+                                color: Colors.grey[600]
+                              ),
+                            ),
+
+                            const SizedBox(
+                              width: 140,
+                            ),
+                            const Center(
                               child: Text(
                                 "더보기",
                                 style: TextStyle(
@@ -303,44 +317,44 @@ class MateList extends StatelessWidget {
     {
       "rank": 1,
       "name": "박도현",
-      "hashtag": "#낭만 #술",
+      "hashtag": "전라북도 전주시",
       "image": 'images/dohyeon.jpg',
       "rating": "10만, 5.0점",
     },
     {
       "rank": 2,
       "name": "박태정",
-      "hashtag": "#식도락",
+      "hashtag": "전라북도 군산시",
       "image": 'images/taejeong.png',
-      "rating": "5만, 4.8점",
+      "rating": "5만, 5.0점",
     },
     {
       "rank": 3,
       "name": "김강우",
-      "hashtag": "#모험 #자유",
-      "image": 'images/dohyeon.png',
-      "rating": "3만, 4.5점",
+      "hashtag": "인천광역시",
+      "image": 'images/gangwoo.jpg',
+      "rating": "3만, 5.0점",
     },
     {
       "rank": 4,
       "name": "오승주",
-      "hashtag": "#독립 #희생",
-      "image": 'images/dohyeon.png',
-      "rating": "2만, 2.7점",
+      "hashtag": "전라북도 전주시",
+      "image": 'images/seongjoo.jpg',
+      "rating": "2만, 5.0점",
     },
     {
       "rank": 5,
-      "name": "문지기",
-      "hashtag": "#전략 #리더",
-      "image": 'images/dohyeon.png',
+      "name": "탐지기",
+      "hashtag": "서울특별시",
+      "image": 'images/scanner.png',
       "rating": "1만, 4.9점",
     },
     {
       "rank": 6,
-      "name": "현직이",
-      "hashtag": "#전략 #리더",
-      "image": 'images/dohyeon.png',
-      "rating": "1만, 4.9점",
+      "name": "문지기",
+      "hashtag": "경상북도 경주시",
+      "image": 'images/moonjigie.png',
+      "rating": "1만, 4.4점",
     },
   ];
 
@@ -359,7 +373,7 @@ class MateList extends StatelessWidget {
           // 별 개수를 동적으로 설정
           List<Widget> stars = [];
           // full별
-          stars.addAll(List.generate(starCount, (index) => Icon(Icons.star, size: 20, color: Colors.amber)));
+          stars.addAll(List.generate(starCount, (index) => Icon(Icons.star, size: 18, color: Colors.amber)));
           // harf별
           if (hasHalfStar) {
             stars.add(Icon(Icons.star_half, size: 20, color: Colors.amber));
@@ -369,7 +383,7 @@ class MateList extends StatelessWidget {
           stars.addAll(List.generate(remainingStars, (index) => Icon(Icons.star_border, size: 20, color: Colors.amber)));
 
           return Padding(
-            padding: const EdgeInsets.only(bottom: 10),
+            padding: const EdgeInsets.only(bottom: 15),
             child: Row(
               children: [
                 Text(
@@ -383,14 +397,14 @@ class MateList extends StatelessWidget {
                   width: 20,
                 ),
                 CircleAvatar(
-                  radius: 20,
+                  radius: 21,
                   backgroundImage: AssetImage(mate['image']),
                 ),
                 const SizedBox(
                   width: 10,
                 ),
                 SizedBox(
-                  width: 80,
+                  width: 96,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -404,7 +418,7 @@ class MateList extends StatelessWidget {
                       Text(
                         mate['hashtag'],
                         style: const TextStyle(
-                            fontSize: 14,
+                            fontSize: 13,
                             color: Colors.grey
                         ),
                       )
@@ -427,7 +441,7 @@ class MateList extends StatelessWidget {
                     Text(
                       mate['rating'],
                       style: const TextStyle(
-                          fontSize: 14,
+                          fontSize: 13,
                           color: Colors.grey
                       ),
                     )
