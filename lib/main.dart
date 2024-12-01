@@ -73,10 +73,10 @@ class MyPage extends StatelessWidget {
                             color: Colors.grey[300],
                             borderRadius: BorderRadius.circular(8)
                           ),
-                          width: 250,
+                          width: 290,
                           height: 40,
-                          child: Row(
-                            children: const [
+                          child: const Row(
+                            children: [
                               SizedBox(
                                 width: 10,
                               ),
@@ -153,13 +153,13 @@ class MyPage extends StatelessWidget {
                           color: Colors.grey[300],
                           thickness: 1,
                           height: 35,
-                          indent: 20,
-                          endIndent: 20,
+                          indent: 28,
+                          endIndent: 28,
                         ),
                         Row(
                           children: [
                             SizedBox(
-                              width: 20,
+                              width: 28,
                             ),
                             Container(
                               decoration: BoxDecoration(
@@ -181,16 +181,16 @@ class MyPage extends StatelessWidget {
                               ),
                             ),
                             SizedBox(
-                              width: 5,
+                              width: 10,
                             ),
                             const Text(
                               "로컬 여행 메이트를 고르는 꿀팁!",
                               style: TextStyle(
-                                fontWeight: FontWeight.w900
+                                fontWeight: FontWeight.w600
                               ),
                             ),
                             SizedBox(
-                              width: 10,
+                              width: 39,
                             ),
                             const Icon(
                               Icons.arrow_forward_ios,
@@ -376,7 +376,7 @@ class MateList extends StatelessWidget {
                   "${mate['rank']}",
                   style: const TextStyle(
                     fontSize: 30,
-                    fontWeight: FontWeight.w900,
+                    fontWeight: FontWeight.w800,
                   ),
                 ),
                 const SizedBox(
@@ -398,7 +398,7 @@ class MateList extends StatelessWidget {
                         mate['name'],
                         style: const TextStyle(
                             fontSize: 20,
-                            fontWeight: FontWeight.w600
+                            fontWeight: FontWeight.w500
                         ),
                       ),
                       Text(
@@ -418,8 +418,11 @@ class MateList extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Row(
-                      children: stars,
+                    SizedBox(
+                      height: 30,
+                      child: Row(
+                        children: stars,
+                      ),
                     ),
                     Text(
                       mate['rating'],
