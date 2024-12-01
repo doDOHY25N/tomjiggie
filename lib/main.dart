@@ -35,7 +35,7 @@ class MyPage extends StatelessWidget {
             'images/main.png',
           ),
         ),
-        actions: [
+        actions: const [
           IconButton(onPressed: null, icon: Icon(Icons.notifications_none)),
           IconButton(onPressed: null, icon: Icon(Icons.menu))
         ],
@@ -61,7 +61,7 @@ class MyPage extends StatelessWidget {
                       )
                     ]
                   ),
-                  width: 300,
+                  width: 400,
                   height: 210,
                   child: Padding(
                     padding: const EdgeInsets.fromLTRB(8.0, 20, 8.0, 0),
@@ -223,15 +223,15 @@ class MyPage extends StatelessWidget {
                         )
                       ]
                   ),
-                  width: 300,
+                  width: 400,
                   height: 500,
                   child: Padding(
                     padding: const EdgeInsets.fromLTRB(30.0, 40, 30, 0),
                     child: Column(
                       children: [
                         // 제목
-                        Row(
-                          children: const [
+                        const Row(
+                          children: [
                             Center(
                               child: Text(
                                 "지기 랭킹",
@@ -242,7 +242,7 @@ class MyPage extends StatelessWidget {
                               ),
                             ),
                             SizedBox(
-                              width: 120,
+                              width: 170,
                             ),
                             Center(
                               child: Text(
@@ -257,115 +257,11 @@ class MyPage extends StatelessWidget {
                           ],
                         ),
                         const SizedBox(
-                          height: 20,
+                          height: 30,
                         ),
-                        // 인기, AI 추천, 여행톡 묶음
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            Column(
-                              children: [
-                                Image.asset(
-                                  'images/star.png',
-                                  height: 30,
-                                ),
-                                SizedBox(
-                                  height: 5,
-                                ),
-                                const Text(
-                                  "인기",
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.w600
-                                  ),
-                                ),
-                              ],
-                            ),
-                            Column(
-                              children: [
-                                Image.asset(
-                                  'images/ai.png',
-                                  height: 30,
-                                ),
-                                SizedBox(
-                                  height: 5,
-                                ),
-                                const Text(
-                                  "AI 추천",
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.w600
-                                  ),
-                                ),
-                              ],
-                            ),
-                            Column(
-                              children: [
-                                Image.asset(
-                                  'images/chat.png',
-                                  height: 30,
-                                ),
-                                SizedBox(
-                                  height: 5,
-                                ),
-                                const Text(
-                                  "지기톡",
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.w600
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ],
-                        ),
-                        // 공지사항
-                        Divider(
-                          color: Colors.grey[300],
-                          thickness: 1,
-                          height: 35,
-                          indent: 20,
-                          endIndent: 20,
-                        ),
-                        Row(
-                            children: [
-                              SizedBox(
-                                width: 20,
-                              ),
-                              Container(
-                                decoration: BoxDecoration(
-                                    color: Colors.blue[100],
-                                    borderRadius: BorderRadius.circular(5)
-                                ),
-                                width: 30,
-                                height: 20,
-                                child: const Center(
-                                  child: Text(
-                                    "공지",
-                                    textAlign: TextAlign.center,
-                                    style: TextStyle(
-                                        fontSize: 10,
-                                        fontWeight: FontWeight.w900,
-                                        color: Colors.blue
-                                    ),
-                                  ),
-                                ),
-                              ),
-                              SizedBox(
-                                width: 5,
-                              ),
-                              const Text(
-                                "로컬 여행 메이트를 고르는 꿀팁!",
-                                style: TextStyle(
-                                    fontWeight: FontWeight.w900
-                                ),
-                              ),
-                              SizedBox(
-                                width: 10,
-                              ),
-                              const Icon(
-                                Icons.arrow_forward_ios,
-                                size: 15,
-                              ),
-                            ]
-                        )
+
+                        MateList(),
+                        // 1위 랭킹 박스
                       ],
                     ),
                   ),
@@ -399,3 +295,146 @@ class MyPage extends StatelessWidget {
     );
   }
 }
+
+class MateList extends StatelessWidget {
+  MateList({super.key});
+
+  final List<Map<String, dynamic>> mates = [
+    {
+      "rank": 1,
+      "name": "박도현",
+      "hashtag": "#낭만 #술",
+      "image": 'images/dohyeon.jpg',
+      "rating": "10만, 5.0점",
+    },
+    {
+      "rank": 2,
+      "name": "박태정",
+      "hashtag": "#식도락",
+      "image": 'images/taejeong.png',
+      "rating": "5만, 4.8점",
+    },
+    {
+      "rank": 3,
+      "name": "김강우",
+      "hashtag": "#모험 #자유",
+      "image": 'images/dohyeon.png',
+      "rating": "3만, 4.5점",
+    },
+    {
+      "rank": 4,
+      "name": "오승주",
+      "hashtag": "#독립 #희생",
+      "image": 'images/dohyeon.png',
+      "rating": "2만, 2.7점",
+    },
+    {
+      "rank": 5,
+      "name": "문지기",
+      "hashtag": "#전략 #리더",
+      "image": 'images/dohyeon.png',
+      "rating": "1만, 4.9점",
+    },
+    {
+      "rank": 6,
+      "name": "현직이",
+      "hashtag": "#전략 #리더",
+      "image": 'images/dohyeon.png',
+      "rating": "1만, 4.9점",
+    },
+  ];
+
+  @override
+  Widget build(BuildContext context) {
+    return ListView.builder( // 랭킹 프로필
+        shrinkWrap: true,
+        itemCount: mates.length,
+        itemBuilder: (context, index) {
+          var mate = mates[index];
+          // 점수 부분에서 실수 값 추출
+          double score = double.parse(mate['rating'].split(',')[1].replaceAll('점', '').trim());
+          int starCount = score ~/ 1; // 점수에 맞는 별의 개수 (소수점 버림)
+          bool hasHalfStar = (score % 1 >= 0.5); // 0.5 이상이면 반별 추가
+
+          // 별 개수를 동적으로 설정
+          List<Widget> stars = [];
+          // full별
+          stars.addAll(List.generate(starCount, (index) => Icon(Icons.star, size: 20, color: Colors.amber)));
+          // harf별
+          if (hasHalfStar) {
+            stars.add(Icon(Icons.star_half, size: 20, color: Colors.amber));
+          }
+          // 빈 별 (5개가 되도록 나머지 별을 채운다)
+          int remainingStars = 5 - stars.length;
+          stars.addAll(List.generate(remainingStars, (index) => Icon(Icons.star_border, size: 20, color: Colors.amber)));
+
+          return Padding(
+            padding: const EdgeInsets.only(bottom: 10),
+            child: Row(
+              children: [
+                Text(
+                  "${mate['rank']}",
+                  style: const TextStyle(
+                    fontSize: 30,
+                    fontWeight: FontWeight.w900,
+                  ),
+                ),
+                const SizedBox(
+                  width: 20,
+                ),
+                CircleAvatar(
+                  radius: 20,
+                  backgroundImage: AssetImage(mate['image']),
+                ),
+                const SizedBox(
+                  width: 10,
+                ),
+                SizedBox(
+                  width: 80,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        mate['name'],
+                        style: const TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.w600
+                        ),
+                      ),
+                      Text(
+                        mate['hashtag'],
+                        style: const TextStyle(
+                            fontSize: 14,
+                            color: Colors.grey
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+                SizedBox(
+                  width: 10,
+                ),
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(
+                      children: stars,
+                    ),
+                    Text(
+                      mate['rating'],
+                      style: const TextStyle(
+                          fontSize: 14,
+                          color: Colors.grey
+                      ),
+                    )
+                  ],
+                ),
+              ],
+            ),
+          );
+        },
+      );
+  }
+}
+
