@@ -11,11 +11,12 @@ class Chat extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Colors.white,
         elevation: 0.5, // 그림자
-        leadingWidth: 100,
-        leading: Padding(
-          padding: const EdgeInsets.fromLTRB(10, 0, 0, 0),
-          child: Image.asset(
-            'images/main.png',
+        automaticallyImplyLeading: false,
+        title: Text(
+          "채팅",
+          style: TextStyle(
+            fontSize: 25,
+            fontWeight: FontWeight.w600
           ),
         ),
         actions: const [

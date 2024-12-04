@@ -13,13 +13,7 @@ class JiggieDetail extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Colors.white,
         elevation: 0.5, // 그림자
-        leadingWidth: 100,
-        leading: Padding(
-          padding: const EdgeInsets.fromLTRB(10, 0, 0, 0),
-          child: Image.asset(
-            'images/main.png',
-          ),
-        ),
+        leading: const IconButton(onPressed: null, icon: Icon(Icons.arrow_back_ios)),
         actions: const [
           IconButton(onPressed: null, icon: Icon(Icons.favorite_border_rounded)),
           IconButton(onPressed: null, icon: Icon(Icons.file_upload_outlined))
