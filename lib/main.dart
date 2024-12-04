@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'jiggie_detail.dart';
+import 'chat.dart';
 
 void main() {
   runApp(const MyApp());
@@ -10,6 +12,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: "TomJiggie",
       theme: ThemeData(
           colorSchemeSeed: Colors.blue,
           fontFamily: "Pretendard"
@@ -64,7 +68,7 @@ class MyPage extends StatelessWidget {
                   width: 400,
                   height: 210,
                   child: Padding(
-                    padding: const EdgeInsets.fromLTRB(8.0, 20, 8.0, 0),
+                    padding: const EdgeInsets.fromLTRB(8.0, 21, 8.0, 0),
                     child: Column(
                       children: [
                         // 어디로 떠나시나요? 박스
@@ -146,7 +150,7 @@ class MyPage extends StatelessWidget {
                                 ),
                               ],
                             ),
-                          ],
+                          ]
                         ),
                         // 공지사항
                         Divider(
@@ -274,8 +278,17 @@ class MyPage extends StatelessWidget {
                           height: 30,
                         ),
 
-                        MateList(),
-                        // 1위 랭킹 박스
+                        GestureDetector(
+                          onTap: (){
+                            // 클릭 시 JiggieDetailPage로 이동
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const JiggieDetail()),
+                            );
+                          },
+                            child: MateList()
+                        ),
                       ],
                     ),
                   ),
@@ -286,26 +299,47 @@ class MyPage extends StatelessWidget {
         ),
       ),
       bottomNavigationBar: BottomNavigationBar(
+        currentIndex: 0, // 현재 선택된 탭 인덱스
+        selectedItemColor: Colors.black54, // 선택된 아이콘과 텍스트 색상
+        unselectedItemColor: Colors.grey, // 선택되지 않은 아이콘과 텍스트 색상
+        selectedLabelStyle: const TextStyle(
+          fontFamily: "Pretendard", // 지정한 폰트
+          fontWeight: FontWeight.w600, // 폰트 두께
+        ),
+        unselectedLabelStyle: const TextStyle(
+          fontFamily: "Pretendard", // 지정한 폰트
+          fontWeight: FontWeight.w400, // 폰트 두께
+        ),
         onTap: (int index) {
           switch (index) {
             case 0:
-              Navigator.pushNamed(context, '/');
+              Navigator.push(context, MaterialPageRoute(builder: (context) => const MyPage()));
               break;
             case 1:
-              Navigator.pushNamed(context, '/chat');
+              Navigator.push(context, MaterialPageRoute(builder: (context) => const Chat()) );
               break;
             case 2:
-              Navigator.pushNamed(context, '/myplan');
+              Navigator.push(context, MaterialPageRoute(builder: (context) => const Chat()));
               break;
             default:
           }
         },
-        items: [
-          BottomNavigationBarItem(icon: Icon(Icons.home_outlined), label: 'Home'),
-          BottomNavigationBarItem(icon: Icon(Icons.chat_outlined), label: 'Chats'),
-          BottomNavigationBarItem(icon: Icon(Icons.card_travel), label: 'My Plans')
+        items: const [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home_outlined),
+            label: 'Home',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.chat_bubble_outline),
+            label: 'Chats',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.card_travel),
+            label: 'My Plans',
+          ),
         ],
       ),
+
     );
   }
 }
